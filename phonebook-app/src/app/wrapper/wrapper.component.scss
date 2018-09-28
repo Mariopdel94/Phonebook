@@ -31,7 +31,7 @@ header {
 }
 
 #side-menu {
-  background-color: #e2e2e2;
+  background-color: darken($color-primary, 10%);
   height: calc(100% - 3rem);
   min-height: fit-content;
 }
@@ -70,11 +70,12 @@ footer {
   padding: 0 2rem;
 }
 
-.session-button {
+.logout-button {
   width: 100%;
-  padding: .5rem;
+  padding: .5rem 1.5rem;
   border-radius: .6rem;
   background: $color-primary;
+  letter-spacing: 1px;
   color: white;
   text-align: center;
   margin: 1rem auto;

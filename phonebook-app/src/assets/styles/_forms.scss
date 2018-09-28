@@ -9,6 +9,7 @@ textarea {
   box-shadow: none;
   border: 1px solid $color-primary;
   background-color: $color-light;
+  border-radius: 0.3rem;
   font-size: 1rem;
   margin: 0rem;
   outline: none;
@@ -29,7 +30,7 @@ input,
 select {
   height: $height-input;
   transition: all 0.25s ease !important;
-  &.ng-touched.ng-invalid {
+  &.ng-touched.ng-invalid:not(.ng-pristine) {
 		border-color: transparent !important;
     color: white !important;
     background-color: $color-warning !important;
