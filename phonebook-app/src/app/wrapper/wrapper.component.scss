@@ -28,6 +28,13 @@ header {
       }
     }
   }
+  .app-name {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 1.33rem;
+    color: $color-secondary;
+  }
 }
 
 #side-menu {
