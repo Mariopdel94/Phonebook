@@ -1,0 +1,36 @@
+@import "_common";
+#overview-container {
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+.catalog-container {
+  height: 100%;
+  background-color: white;
+  -webkit-overflow-scrolling: touch;
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+
+.edit-container-overlay {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  -webkit-overflow-scrolling: touch;
+  z-index: 3;
+  &.inactive {
+    background-color: rgba(0, 0, 0, 0.0);
+    left: 100%;
+    transition: left 0.5s ease 0.3s, background-color 0.3s ease;
+  }
+  &.active {
+    left: 0%;
+    transition: left 0.5s ease, background-color 0.4s ease 0.4s;
+  }
+  .edit-container {
+    background-color: white;
+    height: 100%;
+    overflow-y: auto;
+  }
+}

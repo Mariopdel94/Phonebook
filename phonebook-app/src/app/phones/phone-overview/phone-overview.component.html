@@ -1,3 +1,22 @@
-<p>
-  phone-overview works!
-</p>
+<div id="overview-container" class="container grid-x">
+    <div class="catalog-container small-12 cell">
+      <app-phone-catalog
+      (onCreate)="createHandler()"
+      (onEdit)="editHandler($event)">
+      </app-phone-catalog>
+    </div>
+
+    <div
+    class="edit-container-overlay small-12 cell grid-x"
+    [class.active]="isEditing"
+    [class.inactive]="!isEditing"
+    (click)="closeEditSection();">
+      <div class="small-12 medium-offset-5 medium-7 large-offset-7 large-5 cell edit-container" (click)="$event.stopPropagation();">
+        <app-create-phone
+        (isEditing)="onisEditing($event)"
+        (contactSaved)="onSave()"
+        [selectedRecord$]="selectedRecord$">
+        </app-create-phone>
+      </div>
+    </div>
+  </div>
