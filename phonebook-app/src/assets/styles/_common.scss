@@ -1,0 +1,366 @@
+@import "_variables";
+@import "_responsive";
+
+/** Mixins **/
+@mixin button-bg($color) {
+	background-color: $color;
+	transition: all 0.25s ease;
+	&:focus { background-color: lighten($color, 5%); }
+	&:hover { background-color: lighten($color, 5%); }
+	&:active { background-color: darken($color, 10%); }
+	&[disabled] { background-color: $color; opacity: 0.5; cursor: default; }
+	&.disabled { background-color: $color; opacity: 0.5; cursor: default; }
+}
+
+@mixin button-color($color) {
+	color: $color;
+	transition: all 0.25s ease;
+	&:focus { color: lighten($color, 5%); }
+	&:hover { color: lighten($color, 5%); }
+	&:active { color: darken($color, 10%); }
+	&[disabled] { color: $color; opacity: 0.5; cursor: default; }
+	&.disabled { color: $color; opacity: 0.5; cursor: default; }
+}
+
+@mixin transform($transform) {
+	-webkit-transform: $transform;
+	-moz-transform: $transform;
+	-ms-transform: $transform;
+	-o-transform: $transform;
+	transform: $transform;
+}
+
+/* Color classes */
+.color-primary { color: $color-primary !important; }
+.color-light { color: $color-light !important; }
+.color-accent { color: $color-accent !important; }
+.color-warning { color: $color-warning !important; }
+.color-neutral { color: $color-neutral !important; }
+.color-text { color: $color-text !important; }
+
+.bg-primary { background-color: $color-primary !important; }
+.bg-light { background-color: $color-light !important; }
+.bg-accent { background-color: $color-accent !important; }
+.bg-warning { background-color: $color-warning !important; }
+.bg-neutral { background-color: $color-neutral !important; }
+.bg-text { background-color: $color-text !important; }
+
+/** Helper classes **/
+.bold {
+	font-weight: bold !important;
+}
+
+.center-x {
+	@extend .flex;
+	justify-content: center;
+}
+
+.center-y {
+	@extend .flex;
+	align-items: center;
+}
+
+.center-xy {
+	@extend .flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.click {
+	cursor: pointer !important;
+}
+
+.flex {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+
+.end-x {
+	@extend .flex;
+	justify-content: flex-end;
+}
+
+.end-y {
+	@extend .flex;
+	align-items: flex-end;
+}
+
+.start-x {
+	@extend .flex;
+	justify-content: flex-start;
+}
+
+.start-y {
+	@extend .flex;
+	align-items: flex-start;
+}
+
+.justify-start {
+	@extend .flex;
+	justify-content: flex-start;
+}
+
+.justify-end {
+	@extend .flex;
+	justify-content: flex-end;
+}
+
+.full-width {
+	width: 100% !important;
+}
+
+.full-height {
+	height: 100% !important;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.inline-block {
+	display: inline-block !important;
+}
+
+.invisible {
+	opacity: 0 !important;
+}
+
+.italic {
+	font-style: italic !important;
+}
+
+.link {
+	@extend .unselectable;
+	@include button-color($color-primary);
+	cursor: pointer !important;
+	&[disabled] {
+		cursor: default !important;
+	}
+}
+
+.margin-auto {
+	margin: auto !important;
+}
+
+.no-margin {
+	margin: 0 !important;
+}
+
+.margin-x {
+	margin-right: 1rem;
+	margin-left: 1rem;
+}
+
+.small-margin-y {
+	margin-top: 0.2rem;
+	margin-bottom: 0.2rem;
+}
+
+.medium-margin-y {
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.margin-y {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.mobile-min-width {
+	min-width: 320px !important;
+}
+
+.padding-x {
+	padding-right: 1rem;
+	padding-left: 1rem;
+}
+
+.small-padding-y {
+	padding-top: 0.25rem;
+	padding-bottom: 0.25rem;
+}
+
+.space-between {
+	@extend .flex;
+	justify-content: space-between;
+}
+
+.padding-y {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+
+.relative {
+	position: relative !important;
+}
+
+.uppercase {
+	text-transform: uppercase !important;
+}
+
+.vertical-margin {
+	margin-top: 1rem !important;
+	margin-bottom: 1rem !important;
+}
+
+.vertical-padding {
+	padding-top: 1rem !important;
+	padding-bottom: 1rem !important;
+}
+
+.wait {
+	cursor: wait !important;
+}
+
+.unselectable {
+	user-select: none !important;
+	-moz-user-select: none !important;
+	-khtml-user-select: none !important;
+	-webkit-user-select: none !important;
+	-o-user-select: none !important;
+}
+
+/** Helper spacings **/
+.small-padding { padding: 0.25rem !important; }
+.medium-padding { padding: 0.5rem !important; }
+.large-padding { padding: 1.0rem !important; }
+
+.small-margin { margin: 0.25rem !important; }
+.medium-margin { margin: 0.5rem !important; }
+.large-margin { margin: 1rem !important; }
+
+/** Helper font-sizes **/
+.font-size-xxlarge { font-size: 3rem !important; }
+.font-size-xlarge { font-size: 2rem !important; }
+.font-size-large { font-size: 1.5rem !important; }
+.font-size-medium { font-size: 1.25rem !important; }
+.font-size-normal { font-size: 1rem !important; }
+.font-size-small { font-size: 0.90rem !important; }
+.font-size-xsmall { font-size: 0.5rem !important; }
+.font-size-xxsmall { font-size: 0.25rem !important; }
+
+/** Button classes. **/
+/* Sets CSS background-color property to the given color, with button animations. */
+.button-bg-light { @include button-bg($color-light); color: #444; }
+.button-bg-warning { @include button-bg($color-warning); }
+.button-bg-accent { @include button-bg($color-accent); }
+.button-bg-primary { @include button-bg($color-primary); }
+.button-bg-neutral { @include button-bg($color-neutral); }
+.button-bg-text { @include button-bg($color-text); }
+
+/* Sets CSS color property to the given color, with button animations. */
+.button-color-light { @include button-color($color-light); }
+.button-color-warning { @include button-color($color-warning); }
+.button-color-accent { @include button-color($color-accent); }
+.button-color-primary { @include button-color($color-primary); }
+.button-color-neutral { @include button-color($color-neutral); }
+.button-color-text { @include button-color($color-text); }
+
+.button {
+	margin: 0rem 0rem 0rem 0rem;
+	font-size: 1rem;
+}
+
+.text-button {
+	@extend .button-color-text;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.rounded-border {
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 50%;
+}
+
+.large-button {
+	padding: 1.5rem 3rem;
+	font-size: 1.25rem;
+}
+
+.medium-button {
+	padding: 1rem 2rem;
+	font-size: 1rem;
+}
+
+.small-button {
+	padding: 0.5rem 1rem;
+	font-size: 1rem;
+}
+
+.round-button {
+	border-radius: 2rem !important;
+}
+
+.table-container {
+	@extend .flex;
+	flex-direction: column;
+	align-items: center;
+	& > * {
+		max-width: 80rem;
+		width: 100%;
+	}
+}
+.table {
+	border-top: 1px solid $color-primary;
+	border-right: 1px solid $color-primary;
+	border-left: 1px solid $color-primary;
+
+	.row-header {
+    border-bottom: 2px solid #68a4f0;
+		background-color: rgba(255, 255, 255, 0.9);
+    color: #5e7385;
+    font-size: 0.85rem;
+    font-weight: bold;
+    padding: 0.5rem;
+    padding-left: 1rem;
+	}
+
+	.row-section {
+		border-bottom: 1px solid $color-primary;
+		background-color: lighten($color-primary, 10%);
+		color: white;
+		padding: 0.5rem 0rem;
+		position: relative;
+
+		&:nth-child(odd) {
+		background-color: lighten($color-primary, 5%);
+		}
+
+		.option {
+			cursor: pointer;
+			position: absolute;
+			right: 0rem;
+			top: 50%;
+			padding: 0.5rem;
+			-webkit-transform: translateY(-50%);
+			-moz-transform: translateY(-50%);
+			-ms-transform: translateY(-50%);
+			-o-transform: translateY(-50%);
+			transform: translateY(-50%);
+		}
+
+	}
+
+	.row-content {
+		padding: 0.5rem;
+		position: relative;
+
+	}
+}
+
+i.dropdown-arrow {
+	@include transform(rotate(90deg));
+	transition: all 0.5s ease;
+
+	&.active {
+		@include transform(rotate(180deg));
+
+	}
+}
+
+.shadow {
+	box-shadow: 0 0 .75rem .1rem rgba(0, 0, 0, 0.1);
+}

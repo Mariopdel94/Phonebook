@@ -1,0 +1,38 @@
+@import '../../../assets/styles/_common';
+
+$color: #eef3fa !default;
+
+.box {
+	@extend .unselectable;
+	border: 1px solid $color-primary;
+	border-radius: 1px;
+	background-color: $color-light;
+	margin-right: 0.5rem !important;
+	cursor: pointer;
+	height: 1.2rem;
+	position: relative;
+	width: 1.2rem;
+	transition: all 0.1s ease;
+	& > * {
+		color: $color-primary;
+		cursor: pointer;
+		font-size: 0.7rem;
+		position: absolute;
+		left: 48.2%;
+		top: 50%;
+		opacity: 1;
+		transition: all 0.1s ease;
+		transform: translate3d(-50%, -50%, 0px);
+	}
+
+	&.active { background-color: lighten($color, 10%);}
+	&.disabled {
+		cursor: default;
+		opacity: 0.75;
+		border: 2px solid #7f7f7f;
+
+		& > * {
+			cursor: default;
+		}
+	}
+}

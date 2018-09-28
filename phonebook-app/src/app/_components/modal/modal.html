@@ -1,0 +1,5 @@
+<div #container class="modal-component-container" (click)="isLocked ? false : close()" [class.transparent]="!isVisible" [class.hidden]="!isOpen">
+  <div (click)="$event.stopPropagation();">
+    <ng-content *ngIf="isOpen"></ng-content>
+  </div>
+</div>

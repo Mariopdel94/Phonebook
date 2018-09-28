@@ -1,0 +1,8 @@
+<div class="inline-block">
+	<div (click)="toggle($event);">
+		<div class="box" [class.active]="checked || value" [class.disabled]="disabled">
+
+			<i class="fa fa-stop" [class.invisible]="!value && !checked"></i>
+		</div>
+	</div>
+</div>

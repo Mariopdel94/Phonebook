@@ -1,0 +1,7 @@
+<div class="toast" [@state]="currentState" [ngClass]="{
+	default: type == 'default',
+	warning: type == 'warning'
+}">
+	<i (click)="close()" class="close-icon material-icons">&#xE5CD;</i>
+	<div *ngIf="message" class="message">{{ message }}</div>
+</div>

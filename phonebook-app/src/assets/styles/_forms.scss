@@ -1,0 +1,83 @@
+@import './common';
+$color-input: $color-light !default;
+$height-input: 2.5rem;
+/* Normalization */
+
+input,
+select,
+textarea {
+  box-shadow: none;
+  border: 1px solid $color-primary;
+  background-color: $color-light;
+  font-size: 1rem;
+  margin: 0rem;
+  outline: none;
+  &:hover,
+  &:focus,
+  &:active {
+    outline: 0;
+    border: 1px solid $color-primary;
+    box-shadow: none;
+    transition: inherit;
+  }
+  &:disabled {
+    cursor: inherit;
+	}
+}
+
+input,
+select {
+  height: $height-input;
+  transition: all 0.25s ease !important;
+  &.ng-touched.ng-invalid {
+		border-color: transparent !important;
+    color: white !important;
+    background-color: $color-warning !important;
+		transition: all 0.25s ease !important;
+  }
+}
+
+textarea {
+  border: 1px solid $color-primary;
+  &:hover,
+  &:focus,
+  &:active {
+    border: 1px solid $color-primary;
+  }
+}
+
+.error-message {
+  color: $color-warning;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 1rem 0rem;
+  background-color: rgba($color-warning, 0.15);
+  height: 0rem;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  &.active {
+    height: $height-input;
+  }
+}
+
+.not-valid {
+  border-color: transparent !important;
+  color: white !important;
+  background-color: $color-warning !important;
+  transition: all 0.25s ease !important;
+}
+
+.field-input {
+  margin: 0.5rem 0rem;
+}
+
+.field-label {
+  text-align: left;
+}
+
+.button {
+  margin: 0rem 0.5rem;
+  cursor: pointer;
+}

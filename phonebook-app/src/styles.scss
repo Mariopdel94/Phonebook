@@ -1,0 +1,104 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "./assets/styles/_common";
+@import "node_modules/ladda/css/ladda";
+@import "./assets/styles/_select";
+// @import "./assets/styles/_select-overview";
+
+
+
+html,
+body {
+  font-family: 'Nunito', sans-serif !important;
+  font-weight: normal;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Material Datepicker Styles */
+mat-datepicker-content,
+md-datepicker-content {
+  box-shadow: none !important;
+
+  md-calendar,
+  mat-calendar {
+    width: 15rem !important;
+    height: auto !important;
+  }
+  md-calendar,
+  mat-calendar {
+    width: 15rem !important;
+    height: auto !important;
+  }
+  * {
+    font-family: inherit !important;
+		font-weight: bold !important;
+		font-size: 0.75rem !important;
+		color: $color-primary !important;
+		border: none !important;
+  }
+  table thead {
+    background-color: white !important;
+  }
+  table tr {
+    background-color: white !important;
+  }
+  table tbody,
+  table tfoot,
+  table thead {
+    border: none !important;
+  }
+  .mat-calendar-body-selected,
+  .md-calendar-body-selected {
+    box-shadow: none !important;
+    background-color: $color-neutral !important;
+    color: white !important;
+  }
+  .mat-calendar-body-today:not(.mat-calendar-body-selected),
+  .md-calendar-body-today:not(.md-calendar-body-selected) {
+    box-shadow: none !important;
+    background-color: $color-secondary !important;
+    color: white !important;
+  }
+}
+
+
+/* Pagination styles */
+
+.ngx-pagination .current {
+  background: transparent !important;
+  color: $color-text !important;
+  border: 2px solid $color-primary;
+}
+
+.ngx-pagination a {
+  color: $color-text !important;
+  font-weight: 400;
+  &::after,
+  &.disabled::after,
+  &::before,
+  &.disabled::before {
+    margin: 0 !important;
+  }
+}
+
+.ngx-pagination {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.ladda-button[data-style=expand-right][data-loading] {
+  padding-right: 3rem !important;
+}
+
+.ladda-label {
+  @extend .center-xy;
+}
+
+.ng-dropdown-panel-items.scroll-host {
+  width: 100% !important;
+}
