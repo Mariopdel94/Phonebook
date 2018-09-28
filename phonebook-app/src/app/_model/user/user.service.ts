@@ -47,41 +47,11 @@ export class UserService {
     });
   }
 
-  public getAll(currentPage: number,
-    perPage: number,
-    search: string,
-    paginate: boolean,
-    privilege: string ): Observable<{ list: User[], totalItems: number }> {
-    const params = [
-      `page=${ currentPage }`,
-      `per_page=${ perPage }`,
-      `search=${ search }`,
-      `paginate=${ Number(paginate || 0)}`,
-    ].join('&');
-
-    let queryUrl = 'user/all';
-    if (privilege !== 'all') {
-      queryUrl += '/' + privilege;
-    }
-    return this.http.get(`${ apiUrl }${ queryUrl }?` + params)
-      .map((data: any) => {
-        return {
-          list: (data.results.data || data.results || []).map((user) => User.parse(user)),
-          totalItems: Number(data.results.total || 0),
-        };
-      });
-  }
-
   public saveUser(user: User): Observable<{ user: User }> {
     const params = {
-      id: user.id,
-      email: user.email,
-      password: user.password,
-      full_name: user.fullName,
-      phone_number: user.phoneNumber,
-      privilege: user.privilege,
-      address: user.address,
-      pin: user.pin,
+      id: Number(user.id || 0),
+      password: String(user.password || ''),
+      username: String(user.username || ''),
     };
     return this.http.post(`${ apiUrl }user/${ user.id }`, params)
     .map((data: any) => {
@@ -95,25 +65,10 @@ export class UserService {
     });
   }
 
-  public removeUser(user: User) {
-    const params = {
-      id: user.id
-    };
-
-    return this.http.delete(`${ apiUrl }user/${params.id}`);
-  }
-
-  public getUser(search: string): Observable<User[]> {
-    const params = [
-      `page=1`,
-      `per_page=20`,
-      `search=${ search }`,
-      `paginate=0`,
-    ].join('&');
-
-    return this.http.get(`${ apiUrl }user/all?` + params)
+  public getUser(userId: number): Observable<{ record: User }> {
+    return this.http.get(`${ apiUrl }user/` + userId)
     .map((data: any) => {
-      return (data.results.data || data.results || []).map((user) => User.parse(user));
+      return { record: User.parse(data.user) };
     });
   }
 
