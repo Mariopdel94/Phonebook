@@ -1,3 +1,25 @@
-<p>
-  wrapper works!
-</p>
+<div class="cell grid-y" id="wrapper">
+  <header class="shadow">
+    <div class="grid-x header-container end-x">
+      <div class="cell show-for-large shrink">
+        <div class="session-button" (click)="logout()">
+          Cerrar sesión
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="auto cell grid-x">
+    <div id="side-menu" class="show-for-large large-2 cell">
+      <!-- Just add a profile picture or something -->
+    </div>
+    <div class="small-12 large-10 cell">
+      <app-router></app-router>
+    </div>
+    <footer class="small-12 cell">
+      <div class="full-height center-y">
+        <span>Mario A. Pineda - 2018</span>
+      </div>
+    </footer>
+  </main>
+</div>
+<toast-factory></toast-factory>

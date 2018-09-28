@@ -1,0 +1,91 @@
+@import "../../assets/styles/common";
+
+#wrapper {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+header {
+  background-color: $color-light;
+  color: $color-primary;
+  z-index: 2;
+  padding: 0;
+
+  @include screen-large-up {
+    padding: 0 4rem;
+  }
+
+  .header-container {
+    padding: 0rem 1rem !important;
+
+    .icon-menu {
+      font-size: 2rem;
+      cursor: pointer;
+
+      @include screen-medium-up {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
+
+#side-menu {
+  background-color: #e2e2e2;
+  height: calc(100% - 3rem);
+  min-height: fit-content;
+}
+
+// .small-menu-container {
+//   position: fixed;
+//   height: 100%;
+//   width: 100%;
+//   background-color: rgba(0, 0, 0, 0.6);
+//   -webkit-overflow-scrolling: touch;
+//   z-index: 3;
+
+//   .bg-menu {
+//     background-color: #fff;
+//     width: 14rem;
+//     height: 100%;
+//     transition: all 0.5s ease;
+//   }
+
+//   &.inactive {
+//     background-color: rgba(0, 0, 0, 0.0);
+//     right: 100%;
+//     transition: right 0.5s ease 0.3s, background-color 0.3s ease;
+//   }
+
+//   &.active {
+//     right: 0%;
+//     transition: right 0.5s ease, background-color 0.4s ease 0.4s;
+//   }
+// }
+
+footer {
+  height: 3rem;
+  background-color: $color-primary;
+  color: $color-light;
+  padding: 0 2rem;
+}
+
+.session-button {
+  width: 100%;
+  padding: .5rem;
+  border-radius: .6rem;
+  background: $color-primary;
+  color: white;
+  text-align: center;
+  margin: 1rem auto;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  @include screen-large-up {
+    font-size: .9rem;
+  }
+
+  &:hover {
+    background: darken($color-primary, 10%);
+  }
+}
