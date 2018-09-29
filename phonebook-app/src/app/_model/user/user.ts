@@ -2,7 +2,6 @@ export class User {
   public id = 0;
   public username = '';
   public password = '';
-  public isVisible = false;
 
   constructor() {}
 
@@ -14,7 +13,6 @@ export class User {
     this.id = Number(obj.id || this.id || 0);
     this.username = String(obj.username || this.username || '');
     this.password = String(obj.password || this.password || '');
-    this.isVisible = Boolean(obj.isVisible || obj.is_visible || this.isVisible || 0);
     return this;
   }
 
