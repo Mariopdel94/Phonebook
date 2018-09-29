@@ -52,6 +52,7 @@ export class ContactService {
       birthday: moment(contact.birthday).format('YYYY-MM-DD'),
       phone_numbers: (contact.phoneNumbers || []).map(phoneNumber => {
         return {
+          id: Number(phoneNumber.id || 0),
           type: String(phoneNumber.type || ''),
           number: String(phoneNumber.number || ''),
         };

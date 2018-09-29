@@ -1,4 +1,5 @@
 export class ContactNumber {
+  public id = 0;
   public type = '';
   public number = ''; // This is string because phone numbers often ends on 0 and because an integer would be too big
 
@@ -9,6 +10,7 @@ export class ContactNumber {
   }
 
   public set(obj: any): this {
+    this.id = Number(obj.id || this.id || 0);
     this.type = String(obj.type || this.type || '');
     this.number = String(obj.number || this.number || '');
     return this;
