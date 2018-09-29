@@ -23,6 +23,7 @@ import { HttpErrorService } from './_services/http-error.service';
 import { HttpInterceptorService } from './_services/http-interceptor.service';
 import { SessionService } from './_services/session.service';
 import { UserService } from './_model/user/user.service';
+import { ContactService } from './_model/contact/contact.service';
 
 /** Components */
 import { LoginComponent } from './login/login.component';
@@ -79,6 +80,7 @@ const routes: Routes = [
   providers: [
     SessionService,
     UserService,
+    ContactService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorService, multi: true },
     { provide: LocationStrategy, useClass: HashLocationStrategy }

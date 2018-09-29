@@ -38,6 +38,7 @@ header {
 }
 
 #side-menu {
+  padding: 1rem;
   background-color: darken($color-primary, 10%);
   height: calc(100% - 3rem);
   min-height: fit-content;
