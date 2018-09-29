@@ -12,6 +12,7 @@ export class CreatePhoneComponent implements OnInit, OnDestroy {
   @Output() isEditing: EventEmitter<boolean> = new EventEmitter();
   @Output() contactSaved: EventEmitter<boolean> = new EventEmitter();
   @ViewChild('saveForm') public recordForm: any;
+  public isBusy = false;
   public contact = new Contact();
   public destroyed$ = new Subject();
   public phoneNumberTypes = ['Móvil', 'Hogar', 'Trabajo'];
@@ -45,11 +46,14 @@ export class CreatePhoneComponent implements OnInit, OnDestroy {
   }
 
   private retrieveContact(id: number) {
+    this.isBusy = true;
     this.contactService.getSingleContact(id)
     .takeUntil(this.destroyed$)
     .subscribe(response => {
+      this.isBusy = false;
       this.contact = response.record;
     }, error => {
+      this.isBusy = false;
       console.log('Error: ', error);
     });
   }
