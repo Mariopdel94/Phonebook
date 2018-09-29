@@ -41,6 +41,23 @@ header {
   background-color: darken($color-primary, 10%);
   height: calc(100% - 3rem);
   min-height: fit-content;
+  .user-image {
+    background-color: $color-secondary;
+    color: white;
+    font-weight: bold;
+    font-size: 4rem;
+    border-radius: 50%;
+    margin: auto;
+    margin-top: 2rem;
+    width: 10rem;
+    height: 10rem;
+  }
+  .user-name {
+    margin-top: 1rem;
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+  }
 }
 
 // .small-menu-container {
