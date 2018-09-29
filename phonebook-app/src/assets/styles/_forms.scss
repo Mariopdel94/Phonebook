@@ -30,7 +30,7 @@ input,
 select {
   height: $height-input;
   transition: all 0.25s ease !important;
-  &.ng-touched.ng-invalid:not(.ng-pristine) {
+  &.ng-touched.ng-invalid {
 		border-color: transparent !important;
     color: white !important;
     background-color: $color-warning !important;

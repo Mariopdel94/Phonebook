@@ -11,16 +11,17 @@ export class CreatePhoneComponent implements OnInit, OnDestroy {
   @Input() public selectedRecord$: Subject<Contact>;
   @Output() isEditing: EventEmitter<boolean> = new EventEmitter();
   @Output() contactSaved: EventEmitter<boolean> = new EventEmitter();
-  // @ViewChild('saveForm') public recordForm: any;
+  @ViewChild('saveForm') public recordForm: any;
   public contact = new Contact();
   public destroyed$ = new Subject();
+  public phoneNumberTypes = ['Móvil', 'Hogar', 'Trabajo'];
 
   constructor(
     private contactService: ContactService,
   ) { }
 
   ngOnInit() {
-    this.contactSelectionListener();
+    this.contactSelectorListener();
   }
 
   ngOnDestroy() {
@@ -28,7 +29,7 @@ export class CreatePhoneComponent implements OnInit, OnDestroy {
     this.destroyed$.complete();
   }
 
-  private contactSelectionListener() {
+  private contactSelectorListener() {
     this.selectedRecord$
     .takeUntil(this.destroyed$)
     .subscribe(contact => {
@@ -36,7 +37,7 @@ export class CreatePhoneComponent implements OnInit, OnDestroy {
         this.retrieveContact(contact.id);
       } else {
         this.contact = new Contact();
-        // this.recordForm.reset();
+        this.recordForm.reset();
       }
     }, error => {
       console.log('Error: ', error);
@@ -44,13 +45,13 @@ export class CreatePhoneComponent implements OnInit, OnDestroy {
   }
 
   private retrieveContact(id: number) {
-    // this.contactService.getContact(id)
-    // .takeUntil(this.destroyed$)
-    // .subscribe(response => {
-    //   this.contact = response.contact;
-    // }, error => {
-    //   console.log('Error: ', error);
-    // });
+    this.contactService.getSingleContact(id)
+    .takeUntil(this.destroyed$)
+    .subscribe(response => {
+      this.contact = response.record;
+    }, error => {
+      console.log('Error: ', error);
+    });
   }
 
 }

@@ -27,7 +27,7 @@ export class PhoneOverviewComponent implements OnInit, OnDestroy {
     this.destroyed$.complete();
   }
 
-  closeEditSection(): void {
+  closeEditing(): void {
     this.isEditing = false;
   }
 

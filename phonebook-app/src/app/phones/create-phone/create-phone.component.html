@@ -1,3 +1,98 @@
-<p>
-  create-phone works!
-</p>
+<div class="crete-catalog grid-y" *ngIf="isBusy">
+  <div class="small-12 cell">
+    <spinner [show]="true" class="catalogs-spinner center-xy"></spinner>
+  </div>
+</div>
+
+<form class="create-catalog grid-y" *ngIf="contact && !isBusy" (ngSubmit)="submit()" #saveForm="ngForm">
+
+  <div class="small-12 cell grid-x grid-margin-x top-container">
+    <span class="center-y click close" (click)="closeEditing();">
+      <i class="material-icons">close</i>
+    </span>
+    <div class="small-6 cell" style="padding: 1rem 0;">
+      <span class="center-y">Contactos
+        <i class="material-icons">edit</i>
+      </span>
+    </div>
+    <div class="small-6 cell end-x">
+      <button class="save-button" type="submit" [ladda]="saveBusy" [disabled]="saveBusy || saveForm.form.invalid">
+        <i class="material-icons">save</i>Guardar
+      </button>
+    </div>
+    <div class="small-12 cell line"></div>
+  </div>
+
+  <div class="grid-x grid-margin-x relative inputs-container">
+    <div class="small-12 medium-6 cell">
+      <label>
+        Nombre(s):
+        <span class="obligatory">*</span>
+      </label>
+      <input name="contact.firstName" required type="text" [(ngModel)]="contact.firstName">
+    </div>
+
+    <div class="small-12 medium-6 cell">
+      <label>
+        Apellido(s):
+        <span class="obligatory">*</span>
+      </label>
+      <input name="contact.lastName" required type="text" [(ngModel)]="contact.lastName">
+    </div>
+
+    <div class="small-6 cell">
+      <label>Teléfono: <span class="obligatory">*</span></label>
+      <ng-select
+      class="background-select center-y"
+      [items]="phoneNumberTypes"
+      [searchable]="false">
+      </ng-select>
+    </div>
+
+    <div class="small-6 cell ">
+      <label>Número: <span class="obligatory">*</span></label>
+      <input mask='(999) 999-9999' name="contact.phoneNumber" type="tel">
+    </div>
+
+    <div class="small-12 cell">
+      <label>Fecha de nacimiento</label>
+      <input name="contact.birthday" type="text" [(ngModel)]="contact.birthday" name="contact.birthday">
+    </div>
+
+    <div class="small-12 medium-6 cell">
+      <label>Sobrenombre:</label>
+      <input type="text" [(ngModel)]="contact.nickName" name="contact.nickName">
+    </div>
+
+    <div class="small-12 medium-6 cell">
+      <label>Compañia:</label>
+      <input type="text" [(ngModel)]="contact.company" name="contact.company">
+    </div>
+
+    <div class="small-12 medium-6 large-4 cell">
+      <label>Titulo:</label>
+      <input type="text" [(ngModel)]="contact.title" name="contact.title">
+    </div>
+
+    <div class="small-12 medium-6 large-4 cell">
+      <label>Página web:</label>
+      <input type="text" [(ngModel)]="contact.website" name="contact.website">
+    </div>
+
+    <div class="small-12 large-4 cell">
+      <label>Email:</label>
+      <input [pattern]="emailRegex" #email="ngModel" type="email" [(ngModel)]="contact.email" name="contact.email">
+    </div>
+
+    <div class="small-12 cell">
+      <label>Domicilio:</label>
+      <input type="text" [(ngModel)]="contact.address" name="contact.address">
+    </div>
+
+    <div class="small-12 cell">
+      <label>Comentarios:</label>
+      <textarea [(ngModel)]="contact.comments" name="contact.comments" cols="30" rows="4"></textarea>
+    </div>
+  </div>
+
+</form>

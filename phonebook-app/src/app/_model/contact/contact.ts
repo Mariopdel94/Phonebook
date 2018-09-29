@@ -12,6 +12,7 @@ export class Contact {
   public website = '';
   public address = '';
   public comments = '';
+  public email = '';
   public birthday: Date;
   public createdAt: Date;
   public updatedAt: Date;
@@ -33,6 +34,7 @@ export class Contact {
     this.website = String(obj.website || this.website || '');
     this.address = String(obj.address || this.address || '');
     this.comments = String(obj.comments || this.comments || '');
+    this.email = String(obj.email || this.email || '');
     this.birthday = moment.utc(obj.birthday || this.birthday).local().toDate();
     this.createdAt = moment.utc(obj.createdAt || this.createdAt).local().toDate();
     this.updatedAt = moment.utc(obj.updatedAt || this.updatedAt).local().toDate();

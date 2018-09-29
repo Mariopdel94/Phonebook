@@ -28,35 +28,42 @@ md-datepicker-content {
     width: 15rem !important;
     height: auto !important;
   }
+
   md-calendar,
   mat-calendar {
     width: 15rem !important;
     height: auto !important;
   }
+
   * {
     font-family: inherit !important;
-		font-weight: bold !important;
-		font-size: 0.75rem !important;
-		color: $color-primary !important;
-		border: none !important;
+    font-weight: bold !important;
+    font-size: 0.75rem !important;
+    color: $color-primary !important;
+    border: none !important;
   }
+
   table thead {
     background-color: white !important;
   }
+
   table tr {
     background-color: white !important;
   }
+
   table tbody,
   table tfoot,
   table thead {
     border: none !important;
   }
+
   .mat-calendar-body-selected,
   .md-calendar-body-selected {
     box-shadow: none !important;
     background-color: $color-neutral !important;
     color: white !important;
   }
+
   .mat-calendar-body-today:not(.mat-calendar-body-selected),
   .md-calendar-body-today:not(.md-calendar-body-selected) {
     box-shadow: none !important;
@@ -77,6 +84,7 @@ md-datepicker-content {
 .ngx-pagination a {
   color: $color-text !important;
   font-weight: 400;
+
   &::after,
   &.disabled::after,
   &::before,
@@ -101,4 +109,10 @@ md-datepicker-content {
 
 .ng-dropdown-panel-items.scroll-host {
   width: 100% !important;
+}
+
+/* Generic styles */
+
+.catalogs-spinner {
+  margin-top: 2rem;
 }
