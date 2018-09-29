@@ -1,0 +1,39 @@
+@import '../../../assets/styles/common';
+header {
+  padding: 1.5rem 1rem;
+  background-color: #d8d8d8;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: bold;
+  color: #4c4c4c;
+}
+
+.contact-card {
+  // box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.1) !important;
+  border: 2px solid $color-secondary;
+  padding: 0.75rem 0;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  .contact-image {
+    border-radius: 50%;
+    overflow: hidden;
+    height: 5rem;
+    width: 5rem;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    img {
+      object-fit: cover;
+    }
+  }
+  .contact-info {
+
+  }
+  &:nth-child(odd) .contact-image {
+    background-color: $color-orange;
+  }
+  &:nth-child(even) .contact-image {
+    background-color: $color-green;
+  }
+}

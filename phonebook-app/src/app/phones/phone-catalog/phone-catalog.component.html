@@ -1,3 +1,18 @@
-<p>
-  phone-catalog works!
-</p>
+<header>
+  <span>Mis contactos</span>
+</header>
+
+<main class="grid-x grid-margin-x grid-margin-y margin-auto">
+  <div class="small-12 medium-6 large-4 cell contact-card grid-x grid-margin-x" *ngFor="let contact of contacts">
+    <div class="shrink cell contact-image center-xy">
+      MP
+    </div>
+    <div class="auto cell contact-info center-y grid-x">
+      <div class="small-12 cell">
+        <span class="bold">Nombre: <span class="text-normal"> Mario Pineda</span></span>
+        <br>
+        <span class="bold">Mobil: <span class="text-normal"> (656)-161-9831</span></span>
+      </div>
+    </div>
+  </div>
+</main>

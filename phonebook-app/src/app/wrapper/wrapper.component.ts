@@ -12,4 +12,8 @@ export class WrapperComponent implements OnInit {
   ngOnInit() {
   }
 
+  logout() {
+
+  }
+
 }

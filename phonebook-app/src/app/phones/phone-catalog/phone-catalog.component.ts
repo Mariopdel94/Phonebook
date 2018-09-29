@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./phone-catalog.component.scss']
 })
 export class PhoneCatalogComponent implements OnInit {
+  public contacts = [1, 2, 3, 4];
 
   constructor() { }
 

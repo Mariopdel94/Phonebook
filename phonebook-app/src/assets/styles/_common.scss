@@ -50,6 +50,10 @@
 	font-weight: bold !important;
 }
 
+.text-normal {
+	font-weight: normal !important;
+}
+
 .center-x {
 	@extend .flex;
 	justify-content: center;
