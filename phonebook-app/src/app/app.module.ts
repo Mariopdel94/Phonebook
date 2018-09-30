@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -11,6 +12,7 @@ import { LaddaModule } from 'angular2-ladda';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 import { RouterComponent } from './_components/router/router.component';
+import { SearchBoxComponent } from './_components/search-box/search-box.component';
 import { ToastComponent } from './_components/toast/toast/toast.component';
 import { SpinnerComponent } from './_components/spinner/spinner/spinner.component';
 import { ToastFactoryComponent } from './_components/toast/toast-factory/toast-factory.component';
@@ -59,6 +61,7 @@ const routes: Routes = [
     CheckboxComponent,
     ModalComponent,
     ToastComponent,
+    SearchBoxComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +70,7 @@ const routes: Routes = [
     HttpModule,
     NgSelectModule,
     FormsModule,
+    BrowserAnimationsModule,
     LaddaModule.forRoot({
       style: 'expand-right',
       spinnerColor: '#71c9f4'

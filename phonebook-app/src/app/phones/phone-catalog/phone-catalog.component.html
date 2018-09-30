@@ -1,5 +1,9 @@
-<header>
+<header class="contacts-header">
   <span>Mis contactos</span>
+</header>
+
+<header>
+  <app-search-box (onSearch)="triggerSearch($event)" (onCreate)="triggerCreation()"></app-search-box>
 </header>
 
 <main class="grid-x grid-margin-x grid-margin-y margin-auto">

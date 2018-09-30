@@ -14,14 +14,16 @@ export class ContactService {
     private http: HttpClient
   ) { }
 
-  public getAllContacts(userId: number): Observable<{ records: Contact[] }> {
+  public getAllContacts({currentPage, itemsPerPage, searchString}): Observable<{ records: Contact[], totalItems: number }> {
     const params = [
-      `user_id=${ userId }`,
+      `page=${ Number(currentPage) }`,
+      `per_page=${ Number(itemsPerPage) }`,
+      `search=${ String(searchString || '') }`
     ].join('&');
-    return this.http.get(apiUrl + 'contacts/all/' + params)
+    return this.http.get(apiUrl + 'phonebook/contacts/all/' + params)
     .map((data: any) => {
       if (data.contacts) {
-        return { records: data.contacts.map(contact => Contact.parse(contact)) };
+        return { records: data.contacts.map(contact => Contact.parse(contact)), totalItems: data.total || 0 };
       }
     }, error => {
       console.log('Error: ', error);
