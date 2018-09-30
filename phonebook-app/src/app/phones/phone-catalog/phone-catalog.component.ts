@@ -17,7 +17,7 @@ export class PhoneCatalogComponent implements OnInit, OnDestroy {
   public contacts: Contact[] = [];
   public searchString = '';
   public destroyed$ = new Subject();
-  public itemsPerPage = 10;
+  public itemsPerPage = 12;
   public currentPage = 1;
   public totalItems = 0;
   public isBusy = false;
