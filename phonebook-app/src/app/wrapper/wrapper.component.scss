@@ -9,7 +9,7 @@ header {
   background-color: $color-light;
   color: $color-primary;
   z-index: 2;
-  padding: 0;
+  padding: 1rem 0rem;
 
   @include screen-large-up {
     padding: 0 4rem;
