@@ -23,7 +23,7 @@ export class ContactService {
     return this.http.get(apiUrl + 'phonebook/contact/all?' + params)
     .map((data: any) => {
       if (data.contacts && data.contacts.data) {
-        return { records: (data.contacts.data || []).map(contact => Contact.parse(contact)), totalItems: data.total || 0 };
+        return { records: (data.contacts.data || []).map(contact => Contact.parse(contact)), totalItems: data.contacts.total || 0 };
       }
     }, error => {
       console.log('Error: ', error);

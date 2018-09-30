@@ -10,7 +10,7 @@
 
 <main class="grid-x grid-margin-x grid-margin-y margin-auto" *ngIf="!isBusy">
   <div class="small-12 medium-6 large-4 cell contact-card grid-x grid-margin-x center-y"
-  *ngFor="let contact of contacts"
+  *ngFor="let contact of contacts | paginate: { id: 'phoneCatalogPagination', itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }"
   (click)="triggerEdition(contact)">
     <div class="shrink cell contact-image center-xy">
       {{ getContactInitials(contact) }}
@@ -27,3 +27,7 @@
     </div>
   </div>
 </main>
+
+<div class="full-width">
+  <pagination-controls *ngIf="contacts.length > 0" class="small-12 cell center-x" id="phoneCatalogPagination" (pageChange)="currentPage = $event; getContactsList();" previousLabel="" nextLabel=""></pagination-controls>
+</div>
