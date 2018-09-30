@@ -1,0 +1,9 @@
+<div class="shrink cell grid-x">
+  <div class="search-bar cell auto">
+    <i class="material-icons search-icon" (click)="triggerSearch();">search </i>
+    <input type="text" name="search" placeholder="Búsqueda" [(ngModel)]="value" (keyup.enter)="triggerSearch();">
+  </div>
+  <div class="shrink cell button-add" (click)="triggerCreate();">
+    <span class="text-add">Agregar contacto</span>
+  </div>
+</div>

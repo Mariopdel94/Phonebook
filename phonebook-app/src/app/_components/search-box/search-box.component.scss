@@ -1,0 +1,42 @@
+@import '../../../assets/styles/common';
+@import '../../../assets/styles/forms';
+
+.search-bar {
+  position: relative;
+  vertical-align: middle;
+  white-space: nowrap;
+  .search-icon {
+    color: darkgray;
+    top: 50%;
+    left: 1.5rem;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    cursor: pointer;
+  }
+}
+
+input[type=text] {
+  border: none !important;
+  border-bottom: 1px solid $color-primary !important;
+  background-color: $color-grey;
+  color: darkgray;
+  font-size: 1rem;
+  font-weight: bold;
+  float: left;
+  padding-left: 45px;
+  height: 2.45rem !important;
+}
+
+.button-add {
+  height: 2.45rem;
+  background-color: $color-primary;
+  &.ladda-button[data-style=expand-right][data-loading] {
+    padding-right: 3rem;
+  }
+  .text-add {
+    color: $color-light;
+    line-height: 2.4rem;
+    padding: 1.4rem;
+    cursor: pointer;
+  }
+}
