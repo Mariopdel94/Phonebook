@@ -1,0 +1,11 @@
+<app-modal>
+  <div class="modal-container" *ngIf="contact">
+    <div class="content">
+      ¿Eliminar el contacto <strong>{{ contact.firstName }} {{ contact.lastName }}</strong>?
+    </div>
+    <div class="controls">
+      <button class="cancel-button" (click)="close()">Cancelar</button>
+      <button class="submit-button" (click)="submit()">Aceptar</button>
+    </div>
+  </div>
+</app-modal>

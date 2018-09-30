@@ -73,7 +73,7 @@ export class ContactService {
   }
 
   public deleteContact(contactId: number): Observable<boolean> {
-    return this.http.delete(apiUrl + 'contact/' + contactId)
+    return this.http.delete(apiUrl + 'phonebook/contact/delete/' + contactId)
     .map((data: any) => {
       return data.status === 'success' ? true : false;
     }, error => {

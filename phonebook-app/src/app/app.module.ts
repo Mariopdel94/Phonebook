@@ -38,6 +38,7 @@ import { WrapperComponent } from './wrapper/wrapper.component';
 import { PhoneOverviewComponent } from './phones/phone-overview/phone-overview.component';
 import { PhoneCatalogComponent } from './phones/phone-catalog/phone-catalog.component';
 import { CreatePhoneComponent } from './phones/create-phone/create-phone.component';
+import { DeleteContactModalComponent } from './modals/delete-contact-modal/delete-contact-modal.component';
 
 
 const routes: Routes = [
@@ -96,6 +97,7 @@ export class MyDateAdapter extends NativeDateAdapter {
     ModalComponent,
     ToastComponent,
     SearchBoxComponent,
+    DeleteContactModalComponent,
   ],
   imports: [
     BrowserModule,

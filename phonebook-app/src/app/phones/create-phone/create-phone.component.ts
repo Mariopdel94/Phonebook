@@ -4,6 +4,7 @@ import { Subject } from 'rxjs/Subject';
 import { Contact, ContactService } from '../../_model/contact';
 import { ContactNumber } from '../../_model/contact/contact-number';
 import { ToastFactoryComponent } from '../../_components/toast/toast-factory/toast-factory.component';
+import { DeleteContactModalComponent } from '../../modals/delete-contact-modal/delete-contact-modal.component';
 
 @Component({
   selector: 'app-create-phone',
@@ -15,6 +16,7 @@ export class CreatePhoneComponent implements OnInit, OnDestroy {
   @Output() isEditing: EventEmitter<boolean> = new EventEmitter();
   @Output() contactSaved: EventEmitter<boolean> = new EventEmitter();
   @ViewChild('saveForm') public recordForm: any;
+  @ViewChild(DeleteContactModalComponent) public deleteContactModal: DeleteContactModalComponent;
   public saveBusy = false;
   public moment = moment;
   public isBusy = false;
@@ -98,6 +100,11 @@ export class CreatePhoneComponent implements OnInit, OnDestroy {
       this.saveBusy = this.isBusy = false;
       console.log('Error: ', error);
     });
+  }
+
+  onRecordDelete() {
+    this.closeEditing();
+    this.contactSaved.emit(true);
   }
 
 }

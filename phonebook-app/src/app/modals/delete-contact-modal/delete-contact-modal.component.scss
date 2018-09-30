@@ -1,0 +1,31 @@
+@import "../../../assets/styles/common";
+.modal-container {
+  background-color: white;
+  padding: 1rem;
+  .content {
+    color: $color-text;
+    font-size: 1.25rem;
+    padding: 1rem 5rem;
+  }
+  .controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    button.cancel-button,
+    button.submit-button {
+      color: $color-secondary;
+      cursor: pointer;
+      padding: 1rem;
+      border-radius: 4px;
+      background-color: transparent;
+      transition: background-color 200ms ease;
+      &:hover,
+      &:focus {
+        background-color: rgba($color-primary, 0.15);
+      }
+      &:active {
+        background-color: rgba($color-primary, 0.30);
+      }
+    }
+  }
+}

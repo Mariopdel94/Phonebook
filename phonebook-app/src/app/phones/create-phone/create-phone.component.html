@@ -130,9 +130,12 @@
       <textarea [(ngModel)]="contact.comments" name="contact.comments" cols="30" rows="4"></textarea>
     </div>
 
-    <div class="small-12 cell margin-y center-xy">
-      <button class="delete-contact">Eliminar contacto</button>
+    <div class="small-12 cell margin-y center-xy" *ngIf="contact && contact.id && contact.id > 0">
+      <button type="button" class="delete-contact" (click)="deleteContactModal.open()">Eliminar contacto</button>
     </div>
   </div>
 
 </form>
+
+
+<app-delete-contact-modal [contact]="contact" (recordDeleted)="onRecordDelete()"></app-delete-contact-modal>
