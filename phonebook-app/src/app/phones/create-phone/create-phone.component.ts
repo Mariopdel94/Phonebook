@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Contact, ContactService } from '../../_model/contact';
+import { ContactNumber } from '../../_model/contact/contact-number';
 
 @Component({
   selector: 'app-create-phone',
@@ -15,6 +16,7 @@ export class CreatePhoneComponent implements OnInit, OnDestroy {
   public isBusy = false;
   public contact = new Contact();
   public destroyed$ = new Subject();
+  public temporalPhone = ContactNumber.parse({ type: 'Móvil', number: '' });
   public phoneNumberTypes = ['Móvil', 'Hogar', 'Trabajo'];
 
   constructor(
@@ -52,11 +54,25 @@ export class CreatePhoneComponent implements OnInit, OnDestroy {
     .subscribe(response => {
       this.isBusy = false;
       this.contact = response.record;
-      console.log(this.contact);
     }, error => {
       this.isBusy = false;
       console.log('Error: ', error);
     });
+  }
+
+  deleteNumber(phoneNumber) {
+    const index = this.contact.phoneNumbers.findIndex((number) => phoneNumber.number === number.number);
+    if (index !== -1) {
+      this.contact.phoneNumbers.splice(index, 1);
+    }
+  }
+
+  addNumber() {
+    if (this.temporalPhone.type && this.temporalPhone.number && this.temporalPhone.number.length > 6) {
+      this.contact.phoneNumbers.push(this.temporalPhone);
+      this.temporalPhone = new ContactNumber();
+      this.temporalPhone.type = 'Móvil';
+    }
   }
 
 }

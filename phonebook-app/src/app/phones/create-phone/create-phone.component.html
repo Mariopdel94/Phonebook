@@ -53,9 +53,9 @@
       </div>
       <div class="auto cell">
         <label>Número: <span class="obligatory">*</span></label>
-        <input mask='(999) 999-9999' [name]="'phoneNumber.number-' + i" type="tel" [(ngModel)]="phoneNumber.number">
+        <input mask='(999) 999-9999' minlength="10" pattern="^[0-9]{10}$" [name]="'phoneNumber.number-' + i" type="tel" [(ngModel)]="phoneNumber.number">
       </div>
-      <div class="shrink no-margin cell">
+      <div class="shrink no-margin cell" (click)="deleteNumber(phoneNumber)">
         <i class="material-icons delete-icon">delete_forever</i>
       </div>
     </div>
@@ -65,6 +65,8 @@
         <label>Teléfono: <span class="obligatory">*</span></label>
         <ng-select
         class="background-select center-y"
+        [(ngModel)]="temporalPhone.type"
+        name="temporalPhone.type"
         [items]="phoneNumberTypes"
         [searchable]="false">
         </ng-select>
@@ -72,10 +74,10 @@
 
       <div class="auto cell">
         <label>Número: <span class="obligatory">*</span></label>
-        <input mask='(999) 999-9999' name="contact.phoneNumber" type="tel">
+        <input mask='(999) 999-9999' name="temporalPhone.number" type="tel" [(ngModel)]="temporalPhone.number">
       </div>
 
-      <div class="shrink no-margin cell">
+      <div class="shrink no-margin cell" (click)="addNumber()">
         <i class="material-icons add-icon">add</i>
       </div>
 
