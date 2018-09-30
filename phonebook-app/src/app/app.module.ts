@@ -10,6 +10,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { LaddaModule } from 'angular2-ladda';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
+import { DateAdapter } from '@angular/material';
 
 import { RouterComponent } from './_components/router/router.component';
 import { SearchBoxComponent } from './_components/search-box/search-box.component';
@@ -77,6 +80,8 @@ const routes: Routes = [
     }),
     NgxMaskModule.forRoot(),
     NgxPaginationModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
   ],
   entryComponents: [
     ToastComponent
@@ -87,6 +92,7 @@ const routes: Routes = [
     ContactService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorService, multi: true },
+    { provide: DateAdapter, useClass: MomentDateAdapter },
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [ RouterComponent ]

@@ -54,9 +54,20 @@
       <input mask='(999) 999-9999' name="contact.phoneNumber" type="tel">
     </div>
 
-    <div class="small-12 cell">
+    <div class="small-12 cell relative">
       <label>Fecha de nacimiento</label>
-      <input name="contact.birthday" type="text" [(ngModel)]="contact.birthday" name="contact.birthday">
+      <input
+      class="input-with-icon"
+      [matDatepicker]="datePicker"
+      name="contact.birthday"
+      [(ngModel)]="contact.birthday"
+      (keydown)="$event.preventDefault()"
+      type="text"
+      (click)="datePicker.open()"
+      (focus)="datePicker.open()">
+      <mat-datepicker #datePicker></mat-datepicker>
+      <i class="material-icons input-icon">calendar_today</i>
+      <!-- <input name="contact.birthday" type="text" [(ngModel)]="contact.birthday" name="contact.birthday"> -->
     </div>
 
     <div class="small-12 medium-6 cell">

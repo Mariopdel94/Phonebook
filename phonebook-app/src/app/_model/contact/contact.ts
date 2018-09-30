@@ -33,9 +33,9 @@ export class Contact {
     this.address = String(obj.address || this.address || '');
     this.comments = String(obj.comments || this.comments || '');
     this.email = String(obj.email || this.email || '');
-    this.birthday = moment.utc(obj.birthday || this.birthday).local().toDate();
-    this.createdAt = moment.utc(obj.createdAt || this.createdAt).local().toDate();
-    this.updatedAt = moment.utc(obj.updatedAt || this.updatedAt).local().toDate();
+    this.birthday = moment(obj.birthday || this.birthday).toDate();
+    this.createdAt = moment(obj.createdAt || this.createdAt).toDate();
+    this.updatedAt = moment(obj.updatedAt || this.updatedAt).toDate();
     return this;
   }
 
