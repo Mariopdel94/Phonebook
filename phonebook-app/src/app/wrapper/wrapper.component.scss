@@ -2,8 +2,7 @@
 
 #wrapper {
   height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 header {
@@ -61,6 +60,11 @@ header {
   }
 }
 
+.app-router {
+  overflow-y: scroll;
+  height: calc(100% - 3rem);
+}
+
 // .small-menu-container {
 //   position: fixed;
 //   height: 100%;
@@ -84,7 +88,7 @@ header {
 
 //   &.active {
 //     right: 0%;
-//     transition: right 0.5s ease, background-color 0.4s ease 0.4s;
+//     transition: right 0.5s ease, background-caolor 0.4s ease 0.4s;
 //   }
 // }
 
@@ -93,6 +97,8 @@ footer {
   background-color: $color-primary;
   color: $color-light;
   padding: 0 2rem;
+  position: fixed;
+  bottom: 0;
 }
 
 .logout-button {
