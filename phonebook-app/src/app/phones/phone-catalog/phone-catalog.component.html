@@ -6,7 +6,9 @@
   <app-search-box (onSearch)="triggerSearch($event)" (onCreate)="triggerCreation()"></app-search-box>
 </header>
 
-<main class="grid-x grid-margin-x grid-margin-y margin-auto">
+<app-spinner [show]="isBusy" class="catalogs-spinner center-xy" *ngIf="isBusy"></app-spinner>
+
+<main class="grid-x grid-margin-x grid-margin-y margin-auto" *ngIf="!isBusy">
   <div class="small-12 medium-6 large-4 cell contact-card grid-x grid-margin-x center-y" *ngFor="let contact of contacts">
     <div class="shrink cell contact-image center-xy">
       {{ getContactInitials(contact) }}
