@@ -10,7 +10,6 @@ export class HttpInterceptorService implements HttpInterceptor {
     public intercept(req: HttpRequest<any>, next: HttpHandler) {
       const authorizedRequest = req.clone({
         setHeaders: {
-          'session-token': this.sessionService.getToken() || '',
           'user-id': this.sessionService.getUser() ? String(this.sessionService.getUser().id) : '',
         },
       });

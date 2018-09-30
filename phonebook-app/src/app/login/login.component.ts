@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       if ( error.error.type === 'account_not_found' || error.error.type === 'password_not_found' ) {
         this.errorMessage = 'La cuenta ingresada no existe.';
         ToastFactoryComponent.showErrorMessage(this.errorMessage);
-      } else if ( error.error.type === 'password' ) {
+      } else if ( error.error.type === 'password' || error.error.type === 'invalid_password' ) {
         this.errorMessage = 'La contraseña ingresada es incorrecta.';
         ToastFactoryComponent.showErrorMessage(this.errorMessage);
       } {

@@ -17,15 +17,11 @@ export class UserService {
 
   public login(account: string, password: string): Observable<{user: User }> {
     const params = {
-      email: String(account || ''),
+      username: String(account || ''),
       password: String(password || ''),
     };
-    return this.http.post(apiUrl + 'user/in', params)
+    return this.http.post(apiUrl + 'phonebook/user/in', params)
     .map((data: any) => {
-      if (data.session_token) {
-        const token = data.session_token;
-        this.sessionService.storeToken(token);
-      }
       let user = new User();
       if (data.user) {
         user = User.parse(data.user);
@@ -37,14 +33,8 @@ export class UserService {
     });
   }
 
-  public logout(): Observable<boolean> {
-    return this.http.get(apiUrl + 'user/out')
-    .map(() => {
-      return true;
-    }, error => {
-      console.log('Error: ', error);
-      return false;
-    });
+  public logout(): void {
+    this.sessionService.clear();
   }
 
   public saveUser(user: User): Observable<{ user: User }> {
