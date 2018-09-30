@@ -6,13 +6,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from './user';
 import { SessionService } from '../../_services/session.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class UserService {
 
   constructor(
     private http: HttpClient,
-    private sessionService: SessionService
+    private sessionService: SessionService,
+    private router: Router,
   ) { }
 
   public login(account: string, password: string): Observable<{user: User }> {
@@ -35,6 +37,7 @@ export class UserService {
 
   public logout(): void {
     this.sessionService.clear();
+    this.router.navigate(['index']);
   }
 
   public saveUser(user: User): Observable<{ user: User }> {
