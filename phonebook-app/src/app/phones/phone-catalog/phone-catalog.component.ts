@@ -1,3 +1,5 @@
+import * as moment from 'moment';
+import 'moment/locale/es';
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Contact, ContactService } from '../../_model';
 import { Subject } from 'rxjs/Subject';
@@ -11,6 +13,7 @@ import { ToastFactoryComponent } from '../../_components/toast/toast-factory/toa
 export class PhoneCatalogComponent implements OnInit, OnDestroy {
   @Output() onCreate = new EventEmitter<boolean>();
   @Output() onEdit = new EventEmitter<Contact>();
+  public moment = moment;
   public contacts: Contact[] = [];
   public searchString = '';
   public destroyed$ = new Subject();

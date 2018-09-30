@@ -1,7 +1,9 @@
+import * as moment from 'moment';
 import { Component, OnInit, Input, ViewChild, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Contact, ContactService } from '../../_model/contact';
 import { ContactNumber } from '../../_model/contact/contact-number';
+import { ToastFactoryComponent } from '../../_components/toast/toast-factory/toast-factory.component';
 
 @Component({
   selector: 'app-create-phone',
@@ -13,6 +15,8 @@ export class CreatePhoneComponent implements OnInit, OnDestroy {
   @Output() isEditing: EventEmitter<boolean> = new EventEmitter();
   @Output() contactSaved: EventEmitter<boolean> = new EventEmitter();
   @ViewChild('saveForm') public recordForm: any;
+  public saveBusy = false;
+  public moment = moment;
   public isBusy = false;
   public contact = new Contact();
   public destroyed$ = new Subject();
@@ -37,6 +41,7 @@ export class CreatePhoneComponent implements OnInit, OnDestroy {
     .takeUntil(this.destroyed$)
     .subscribe(contact => {
       if (contact.id && contact.id > 0) {
+        this.temporalPhone = ContactNumber.parse({ type: 'Móvil', number: '' });
         this.retrieveContact(contact.id);
       } else {
         this.contact = new Contact();
@@ -73,6 +78,22 @@ export class CreatePhoneComponent implements OnInit, OnDestroy {
       this.temporalPhone = new ContactNumber();
       this.temporalPhone.type = 'Móvil';
     }
+  }
+
+  submit() {
+    this.addNumber();
+    this.saveBusy = this.isBusy = true;
+    this.contactService.saveContact(this.contact)
+    .takeUntil(this.destroyed$)
+    .subscribe(response => {
+      this.saveBusy = false;
+      this.contactSaved.emit(true);
+      this.retrieveContact(response.record.id);
+      ToastFactoryComponent.showMessage('¡Guardado exitoso!');
+    }, error => {
+      this.saveBusy = this.isBusy = false;
+      console.log('Error: ', error);
+    });
   }
 
 }

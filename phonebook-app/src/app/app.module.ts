@@ -1,18 +1,20 @@
+import * as moment from 'moment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, Injectable } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import 'moment/locale/es';
 
 import { NgSelectModule } from '@ng-select/ng-select';
 import { LaddaModule } from 'angular2-ladda';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
-import { DateAdapter } from '@angular/material';
+import { DateAdapter, NativeDateAdapter, MAT_DATE_FORMATS } from '@angular/material';
 
 import { RouterComponent } from './_components/router/router.component';
 import { SearchBoxComponent } from './_components/search-box/search-box.component';
@@ -50,6 +52,35 @@ const routes: Routes = [
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
+
+const MY_DATE_FORMATS = {
+  parse: {
+    dateInput: {month: 'short', year: 'numeric', day: 'numeric'}
+  },
+  display: {
+    dateInput: 'input',
+    monthYearLabel: {year: 'numeric', month: 'short'},
+    dateA11yLabel: {year: 'numeric', month: 'long', day: 'numeric'},
+    monthYearA11yLabel: {year: 'numeric', month: 'long'},
+  }
+};
+
+@Injectable()
+export class MyDateAdapter extends NativeDateAdapter {
+  format(date: Date, displayFormat: Object): string {
+    if (displayFormat === 'input') {
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+      return moment(new Date(year, month, day)).format('LL');
+    } else {
+      return date.toDateString();
+    }
+  }
+  private _to2digit(n: number) {
+    return ('00' + n).slice(-2);
+  }
+}
 
 @NgModule({
   declarations: [
@@ -92,7 +123,8 @@ const routes: Routes = [
     ContactService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorService, multi: true },
-    { provide: DateAdapter, useClass: MomentDateAdapter },
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
+    { provide: DateAdapter, useClass: MyDateAdapter },
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [ RouterComponent ]

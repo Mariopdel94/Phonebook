@@ -22,8 +22,8 @@ export class ContactService {
     ].join('&');
     return this.http.get(apiUrl + 'phonebook/contact/all?' + params)
     .map((data: any) => {
-      if (data.contacts && data.contacts.data && data.contacts.data.length > 0) {
-        return { records: (data.contacts.data).map(contact => Contact.parse(contact)), totalItems: data.total || 0 };
+      if (data.contacts && data.contacts.data) {
+        return { records: (data.contacts.data || []).map(contact => Contact.parse(contact)), totalItems: data.total || 0 };
       }
     }, error => {
       console.log('Error: ', error);
@@ -31,7 +31,7 @@ export class ContactService {
   }
 
   public getSingleContact(contactId: number): Observable<{ record: Contact }> {
-    return this.http.get(apiUrl + '/phonebook/contact/single?id=' + contactId)
+    return this.http.get(apiUrl + 'phonebook/contact/single?id=' + contactId)
     .map((data: any) => {
       if (data.contact) {
         return { record: Contact.parse(data.contact) };
@@ -43,6 +43,7 @@ export class ContactService {
 
   public saveContact(contact: Contact): Observable<{ record: Contact }> {
     const params = {
+      id: Number(contact.id || 0),
       first_name: String(contact.firstName || ''),
       last_name: String(contact.lastName || ''),
       nick_name: String(contact.nickName || ''),
@@ -50,7 +51,7 @@ export class ContactService {
       website: String(contact.website || ''),
       address: String(contact.address || ''),
       comments: String(contact.comments || ''),
-      birthday: moment(contact.birthday).format('YYYY-MM-DD'),
+      birthday: contact.birthday ? moment(contact.birthday).format('YYYY-MM-DD') : '',
       phone_numbers: (contact.phoneNumbers || []).map(phoneNumber => {
         return {
           id: Number(phoneNumber.id || 0),
@@ -59,7 +60,7 @@ export class ContactService {
         };
       })
     };
-    return this.http.post(`${ apiUrl }contact/${ contact.id }`, params)
+    return this.http.post(`${ apiUrl }phonebook/contact/save`, params)
     .map((data: any) => {
       let savedRecord = new Contact();
       if (data.contact) {

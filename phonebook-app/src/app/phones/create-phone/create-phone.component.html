@@ -52,7 +52,7 @@
         </ng-select>
       </div>
       <div class="auto cell">
-        <label>Número: <span class="obligatory">*</span></label>
+        <label>Número 10 dígitos: <span class="obligatory">*</span></label>
         <input mask='(999) 999-9999' minlength="10" pattern="^[0-9]{10}$" [name]="'phoneNumber.number-' + i" type="tel" [(ngModel)]="phoneNumber.number">
       </div>
       <div class="shrink no-margin cell" (click)="deleteNumber(phoneNumber)">
@@ -73,7 +73,7 @@
       </div>
 
       <div class="auto cell">
-        <label>Número: <span class="obligatory">*</span></label>
+        <label>Número 10 dígitos: <span class="obligatory">*</span></label>
         <input mask='(999) 999-9999' name="temporalPhone.number" type="tel" [(ngModel)]="temporalPhone.number">
       </div>
 

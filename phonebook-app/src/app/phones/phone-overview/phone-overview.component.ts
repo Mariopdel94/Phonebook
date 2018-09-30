@@ -48,7 +48,7 @@ export class PhoneOverviewComponent implements OnInit, OnDestroy {
   }
 
   onSave() {
-    // this.phoneCatalogComponent.getContactList();
+    this.phoneCatalogComponent.getContactsList();
   }
 
 }

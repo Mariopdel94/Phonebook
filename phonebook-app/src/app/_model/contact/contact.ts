@@ -3,7 +3,7 @@ import { ContactNumber } from './contact-number';
 
 export class Contact {
   public id = 0;
-  public phoneNumbers: ContactNumber[];
+  public phoneNumbers: ContactNumber[] = [];
   public firstName = '';
   public lastName = '';
   public nickName = '';
@@ -33,7 +33,7 @@ export class Contact {
     this.address = String(obj.address || this.address || '');
     this.comments = String(obj.comments || this.comments || '');
     this.email = String(obj.email || this.email || '');
-    this.birthday = moment(obj.birthday || this.birthday).toDate();
+    this.birthday = obj.birthday || this.birthday ? moment(obj.birthday || this.birthday).toDate() : undefined;
     this.createdAt = moment(obj.createdAt || this.createdAt).toDate();
     this.updatedAt = moment(obj.updatedAt || this.updatedAt).toDate();
     return this;

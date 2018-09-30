@@ -18,9 +18,9 @@
     <div class="auto cell contact-info center-y grid-x">
       <div class="small-12 cell">
         <div class="bold full-width">Nombre: <span class="text-normal"> {{ contact.firstName }} {{ contact.lastName }}</span></div>
-        <div class="bold full-width" *ngIf="contact.nickName">Sobrenombre: <span class="text-normal">{{ contact.nickName }}</span></div>
+        <div class="bold full-width" *ngIf="contact.birthday">Cumpleaños: <span class="text-normal">{{ moment(contact.birthday).format('LL') }}</span></div>
         <div class="bold full-width" *ngIf="contact.company">Empresa: <span class="text-normal">{{ contact.company }}</span></div>
-        <div class="bold full-width" *ngFor="let number of contact.phoneNumbers;">
+        <div class="bold full-width" *ngFor="let number of contact.phoneNumbers.slice(0, 2);">
           {{ number.type }}: <span class="text-normal"> {{ displayPhoneNumber(number.number) }}</span>
         </div>
       </div>
