@@ -31,7 +31,7 @@ export class ContactService {
   }
 
   public getSingleContact(contactId: number): Observable<{ record: Contact }> {
-    return this.http.get(apiUrl + 'contact/' + contactId)
+    return this.http.get(apiUrl + '/phonebook/contact/single?id=' + contactId)
     .map((data: any) => {
       if (data.contact) {
         return { record: Contact.parse(data.contact) };
