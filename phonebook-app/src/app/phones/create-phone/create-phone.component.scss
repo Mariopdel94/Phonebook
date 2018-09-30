@@ -41,3 +41,17 @@ input {
   border-color: $color-secondary;
   color: $color-secondary;
 }
+
+.delete-contact {
+  background-color: $color-warning;
+  color: white;
+  border-radius: 0.75rem;
+  padding: 1rem 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  &:hover {
+    background-color: lighten($color-warning, 5%);
+  }
+}
