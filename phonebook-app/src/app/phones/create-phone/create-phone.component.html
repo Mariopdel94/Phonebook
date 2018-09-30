@@ -40,19 +40,47 @@
       <input name="contact.lastName" required type="text" [(ngModel)]="contact.lastName">
     </div>
 
-    <div class="small-6 cell">
-      <label>Teléfono: <span class="obligatory">*</span></label>
-      <ng-select
-      class="background-select center-y"
-      [items]="phoneNumberTypes"
-      [searchable]="false">
-      </ng-select>
+    <div class="small-12 cell full-width margin-auto grid-margin-x grid-x center-y" *ngFor="let phoneNumber of contact.phoneNumbers; let i = index;">
+      <div class="auto cell">
+        <label>Teléfono: <span class="obligatory">*</span></label>
+        <ng-select
+        class="background-select center-y"
+        [items]="phoneNumberTypes"
+        [(ngModel)]="phoneNumber.type"
+        [name]="'phoneNumber.type-' + i"
+        [searchable]="false">
+        </ng-select>
+      </div>
+      <div class="auto cell">
+        <label>Número: <span class="obligatory">*</span></label>
+        <input mask='(999) 999-9999' [name]="'phoneNumber.number-' + i" type="tel" [(ngModel)]="phoneNumber.number">
+      </div>
+      <div class="shrink no-margin cell">
+        <i class="material-icons delete-icon">delete_forever</i>
+      </div>
     </div>
 
-    <div class="small-6 cell ">
-      <label>Número: <span class="obligatory">*</span></label>
-      <input mask='(999) 999-9999' name="contact.phoneNumber" type="tel">
+    <div class="small-12 cell full-width margin-auto grid-margin-x grid-x center-y">
+      <div class="auto cell">
+        <label>Teléfono: <span class="obligatory">*</span></label>
+        <ng-select
+        class="background-select center-y"
+        [items]="phoneNumberTypes"
+        [searchable]="false">
+        </ng-select>
+      </div>
+
+      <div class="auto cell">
+        <label>Número: <span class="obligatory">*</span></label>
+        <input mask='(999) 999-9999' name="contact.phoneNumber" type="tel">
+      </div>
+
+      <div class="shrink no-margin cell">
+        <i class="material-icons add-icon">add</i>
+      </div>
+
     </div>
+
 
     <div class="small-12 cell relative">
       <label>Fecha de nacimiento</label>

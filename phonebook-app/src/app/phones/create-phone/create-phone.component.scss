@@ -14,3 +14,30 @@ input {
   top: 41%;
   right: 1rem;
 }
+
+.bordered-icon {
+  border-radius: 50%;
+  border: 2px solid;
+  cursor: pointer;
+  padding: 0.2rem;
+  transform: scale(1);
+  transition: all 0.25s ease;
+  &:active {
+    transform: scale(0.9);
+  }
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.delete-icon {
+  @extend .bordered-icon;
+  border-color: $color-warning;
+  color: $color-warning;
+}
+
+.add-icon {
+  @extend .bordered-icon;
+  border-color: $color-secondary;
+  color: $color-secondary;
+}

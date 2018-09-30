@@ -52,6 +52,7 @@ export class CreatePhoneComponent implements OnInit, OnDestroy {
     .subscribe(response => {
       this.isBusy = false;
       this.contact = response.record;
+      console.log(this.contact);
     }, error => {
       this.isBusy = false;
       console.log('Error: ', error);
