@@ -1,4 +1,4 @@
-<div class="cell grid-y" id="wrapper">
+<div class="cell grid-y" id="wrapper" *ngIf="user">
   <header class="shadow">
     <div class="grid-x header-container space-between">
       <div class="cell app-name small-12 center-xy large-shrink">
@@ -13,8 +13,8 @@
   </header>
   <main class="auto cell grid-x">
     <div id="side-menu" class="show-for-large large-2 cell text-center">
-      <div class="user-image center-xy">MP</div>
-      <div class="user-name">Mario A. Pineda</div>
+      <div class="user-image center-xy">{{ getContactInitials() }}</div>
+      <div class="user-name">{{ user.firstName }} {{ user.lastName }}</div>
     </div>
     <div class="small-12 large-10 cell">
       <app-router></app-router>

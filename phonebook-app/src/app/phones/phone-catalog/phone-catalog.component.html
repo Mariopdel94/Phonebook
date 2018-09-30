@@ -7,15 +7,18 @@
 </header>
 
 <main class="grid-x grid-margin-x grid-margin-y margin-auto">
-  <div class="small-12 medium-6 large-4 cell contact-card grid-x grid-margin-x" *ngFor="let contact of contacts">
+  <div class="small-12 medium-6 large-4 cell contact-card grid-x grid-margin-x center-y" *ngFor="let contact of contacts">
     <div class="shrink cell contact-image center-xy">
-      MP
+      {{ getContactInitials(contact) }}
     </div>
     <div class="auto cell contact-info center-y grid-x">
       <div class="small-12 cell">
-        <span class="bold">Nombre: <span class="text-normal"> Mario Pineda</span></span>
-        <br>
-        <span class="bold">Móvil: <span class="text-normal"> (656)-161-9831</span></span>
+        <div class="bold full-width">Nombre: <span class="text-normal"> {{ contact.firstName }} {{ contact.lastName }}</span></div>
+        <div class="bold full-width" *ngIf="contact.nickName">Sobrenombre: <span class="text-normal">{{ contact.nickName }}</span></div>
+        <div class="bold full-width" *ngIf="contact.company">Empresa: <span class="text-normal">{{ contact.company }}</span></div>
+        <div class="bold full-width" *ngFor="let number of contact.phoneNumbers;">
+          {{ number.type }}: <span class="text-normal"> {{ displayPhoneNumber(number.number) }}</span>
+        </div>
       </div>
     </div>
   </div>

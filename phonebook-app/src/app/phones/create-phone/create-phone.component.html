@@ -69,17 +69,12 @@
       <input type="text" [(ngModel)]="contact.company" name="contact.company">
     </div>
 
-    <div class="small-12 medium-6 large-4 cell">
-      <label>Titulo:</label>
-      <input type="text" [(ngModel)]="contact.title" name="contact.title">
-    </div>
-
-    <div class="small-12 medium-6 large-4 cell">
+    <div class="small-12 medium-6 cell">
       <label>Página web:</label>
       <input type="text" [(ngModel)]="contact.website" name="contact.website">
     </div>
 
-    <div class="small-12 large-4 cell">
+    <div class="small-12 medium-6 cell">
       <label>Email:</label>
       <input [pattern]="emailRegex" #email="ngModel" type="email" [(ngModel)]="contact.email" name="contact.email">
     </div>

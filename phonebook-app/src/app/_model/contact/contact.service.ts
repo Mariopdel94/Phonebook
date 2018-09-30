@@ -20,10 +20,10 @@ export class ContactService {
       `per_page=${ Number(itemsPerPage) }`,
       `search=${ String(searchString || '') }`
     ].join('&');
-    return this.http.get(apiUrl + 'phonebook/contacts/all/' + params)
+    return this.http.get(apiUrl + 'phonebook/contact/all?' + params)
     .map((data: any) => {
-      if (data.contacts) {
-        return { records: data.contacts.map(contact => Contact.parse(contact)), totalItems: data.total || 0 };
+      if (data.contacts && data.contacts.data && data.contacts.data.length > 0) {
+        return { records: (data.contacts.data).map(contact => Contact.parse(contact)), totalItems: data.total || 0 };
       }
     }, error => {
       console.log('Error: ', error);
@@ -47,7 +47,6 @@ export class ContactService {
       last_name: String(contact.lastName || ''),
       nick_name: String(contact.nickName || ''),
       company: String(contact.company || ''),
-      title: String(contact.title || ''),
       website: String(contact.website || ''),
       address: String(contact.address || ''),
       comments: String(contact.comments || ''),

@@ -2,6 +2,8 @@ export class User {
   public id = 0;
   public username = '';
   public password = '';
+  public firstName = '';
+  public lastName = '';
 
   constructor() {}
 
@@ -13,6 +15,8 @@ export class User {
     this.id = Number(obj.id || this.id || 0);
     this.username = String(obj.username || this.username || '');
     this.password = String(obj.password || this.password || '');
+    this.firstName = String(obj.firstName || obj.first_name || this.firstName || '');
+    this.lastName = String(obj.lastName || obj.last_name || this.lastName || '');
     return this;
   }
 

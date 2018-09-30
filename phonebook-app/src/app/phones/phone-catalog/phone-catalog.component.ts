@@ -60,4 +60,18 @@ export class PhoneCatalogComponent implements OnInit, OnDestroy {
     this.onEdit.emit(contact);
   }
 
+  getContactInitials(contact: Contact): string {
+    return (contact.firstName[0] || '') + (contact.lastName[0] || '');
+  }
+
+  displayPhoneNumber(phoneNumber: string): string {
+    if (phoneNumber.length === 10) {
+      return '(' + phoneNumber.slice(0, 3) + ')-' + phoneNumber.slice(3, 7) + '-' + phoneNumber.slice(7);
+    } else if (phoneNumber.length === 7) {
+      return phoneNumber.slice(0, 3) + '-' + phoneNumber.slice(3);
+    } else {
+      return phoneNumber;
+    }
+  }
+
 }
