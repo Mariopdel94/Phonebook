@@ -36,6 +36,10 @@ export class CreatePhoneComponent implements OnInit, OnDestroy {
     this.destroyed$.complete();
   }
 
+  public closeEditing() {
+    this.isEditing.emit(false);
+  }
+
   private contactSelectorListener() {
     this.selectedRecord$
     .takeUntil(this.destroyed$)
