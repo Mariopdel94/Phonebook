@@ -1,4 +1,5 @@
 @import '../../../assets/styles/common';
+
 .contacts-header {
   padding: 1.5rem 1rem;
   background-color: #d8d8d8;
@@ -11,10 +12,12 @@
 
 .contact-card {
   // box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.1) !important;
-  border: 2px solid $color-secondary;
+  border: 2px solid #517367;
   padding: 0.75rem 0;
+  position: relative;
   border-radius: 0.2rem;
-  cursor: pointer;
+  padding-right: 3rem;
+
   .contact-image {
     border-radius: 50%;
     overflow: hidden;
@@ -24,17 +27,32 @@
     font-size: 2rem;
     font-weight: bold;
     text-transform: uppercase;
+    background-color: #41bb90;
     img {
       object-fit: cover;
     }
   }
-  .contact-info {
 
+  .edit-container {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    border-radius: 50%;
+    color: white;
+    padding: 0.2rem;
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    background-color: #41bb90;
   }
-  &:nth-child(odd) .contact-image {
-    background-color: $color-orange;
+
+  @include screen-small-only {
+    &:nth-child(even) {
+      .contact-image,
+      .edit-container {
+        background-color: #b5b5b5;
+      }
+    }
   }
-  &:nth-child(even) .contact-image {
-    background-color: $color-green;
-  }
+
 }

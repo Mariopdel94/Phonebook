@@ -9,9 +9,8 @@
 <app-spinner [show]="isBusy" class="catalogs-spinner center-xy" *ngIf="isBusy"></app-spinner>
 
 <main class="grid-x grid-margin-x grid-margin-y margin-auto" *ngIf="!isBusy">
-  <div class="small-12 medium-6 large-4 cell contact-card grid-x grid-margin-x center-y"
-  *ngFor="let contact of contacts | paginate: { id: 'phoneCatalogPagination', itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }"
-  (click)="triggerEdition(contact)">
+  <div class="small-12 medium-6 cell contact-card grid-x grid-margin-x center-y"
+  *ngFor="let contact of contacts | paginate: { id: 'phoneCatalogPagination', itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }">
     <div class="shrink cell contact-image center-xy">
       {{ getContactInitials(contact) }}
     </div>
@@ -19,11 +18,14 @@
       <div class="small-12 cell">
         <div class="bold full-width">Nombre: <span class="text-normal"> {{ contact.firstName }} {{ contact.lastName }}</span></div>
         <div class="bold full-width" *ngIf="contact.birthday">Cumpleaños: <span class="text-normal">{{ moment(contact.birthday).format('LL') }}</span></div>
-        <div class="bold full-width" *ngIf="contact.company">Empresa: <span class="text-normal">{{ contact.company }}</span></div>
+        <div class="bold full-width" *ngIf="contact.company">Compañía: <span class="text-normal">{{ contact.company }}</span></div>
         <div class="bold full-width" *ngFor="let number of contact.phoneNumbers.slice(0, 2);">
           {{ number.type }}: <span class="text-normal"> {{ displayPhoneNumber(number.number) }}</span>
         </div>
       </div>
+    </div>
+    <div class="edit-container center-xy" (click)="triggerEdition(contact)">
+      <i class="material-icons">create</i>
     </div>
   </div>
 </main>
