@@ -71,7 +71,7 @@ export class MyDateAdapter extends NativeDateAdapter {
   format(date: Date, displayFormat: Object): string {
     if (displayFormat === 'input') {
       const day = date.getDate();
-      const month = date.getMonth() + 1;
+      const month = date.getMonth();
       const year = date.getFullYear();
       return moment(new Date(year, month, day)).format('LL');
     } else {
