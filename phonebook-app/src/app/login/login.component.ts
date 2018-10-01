@@ -35,20 +35,18 @@ export class LoginComponent implements OnInit {
     this.user.trim();
     this.userService.login(this.user, this.password)
     .takeWhile(() => this.alive)
-    .subscribe((data) => {
+    .subscribe((response) => {
+      console.log(response);
       this.submitButtonBusy = false;
-      this.router.navigate(['index']);
+      if (response.user.id === 0) {
+        ToastFactoryComponent.showErrorMessage('Credenciales inválidas');
+      } else {
+        this.router.navigate(['index']);
+      }
     }, error => {
       this.submitButtonBusy = false;
-      if ( error.error.type === 'account_not_found' || error.error.type === 'password_not_found' ) {
-        this.errorMessage = 'La cuenta ingresada no existe.';
-        ToastFactoryComponent.showErrorMessage(this.errorMessage);
-      } else if ( error.error.type === 'password' || error.error.type === 'invalid_password' ) {
-        this.errorMessage = 'La contraseña ingresada es incorrecta.';
-        ToastFactoryComponent.showErrorMessage(this.errorMessage);
-      } {
-        ToastFactoryComponent.showErrorMessage('Hubo un error al querer iniciar sesión, por favor intenta más tarde.');
-      }
+      console.log(error);
+      ToastFactoryComponent.showErrorMessage('Hubo un error al querer iniciar sesión, por favor intenta más tarde.');
     });
   }
 }
