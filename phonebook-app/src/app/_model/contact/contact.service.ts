@@ -49,6 +49,7 @@ export class ContactService {
       nick_name: String(contact.nickName || ''),
       company: String(contact.company || ''),
       website: String(contact.website || ''),
+      email: String(contact.email || ''),
       address: String(contact.address || ''),
       comments: String(contact.comments || ''),
       birthday: contact.birthday ? moment(contact.birthday).format('YYYY-MM-DD') : '',
