@@ -16,7 +16,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
 import { DateAdapter, NativeDateAdapter, MAT_DATE_FORMATS } from '@angular/material';
 
-import { RouterComponent } from './_components/router/router.component';
 import { SearchBoxComponent } from './_components/search-box/search-box.component';
 import { ToastComponent } from './_components/toast/toast/toast.component';
 import { SpinnerComponent } from './_components/spinner/spinner/spinner.component';
@@ -27,13 +26,9 @@ import { NgxMaskModule } from 'ngx-mask';
 
 /** Services */
 import { HttpErrorService } from './_services/http-error.service';
-import { HttpInterceptorService } from './_services/http-interceptor.service';
-import { SessionService } from './_services/session.service';
-import { UserService } from './_model/user/user.service';
 import { ContactService } from './_model/contact/contact.service';
 
 /** Components */
-import { LoginComponent } from './login/login.component';
 import { WrapperComponent } from './wrapper/wrapper.component';
 import { PhoneOverviewComponent } from './phones/phone-overview/phone-overview.component';
 import { PhoneCatalogComponent } from './phones/phone-catalog/phone-catalog.component';
@@ -42,16 +37,9 @@ import { DeleteContactModalComponent } from './modals/delete-contact-modal/delet
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'index', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  {
-    path: 'index', component: WrapperComponent,
-    children: [
-      { path: '', redirectTo: 'inicio', pathMatch: 'prefix' },
-      { path: 'inicio', component: PhoneOverviewComponent },
-    ]
-  },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: 'inicio', pathMatch: 'prefix' },
+  { path: '**', redirectTo: 'inicio', pathMatch: 'full' },
+  { path: 'inicio', component: PhoneOverviewComponent },
 ];
 
 const MY_DATE_FORMATS = {
@@ -85,8 +73,6 @@ export class MyDateAdapter extends NativeDateAdapter {
 
 @NgModule({
   declarations: [
-    LoginComponent,
-    RouterComponent,
     WrapperComponent,
     PhoneOverviewComponent,
     PhoneCatalogComponent,
@@ -120,15 +106,12 @@ export class MyDateAdapter extends NativeDateAdapter {
     ToastComponent
   ],
   providers: [
-    SessionService,
-    UserService,
     ContactService,
-    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorService, multi: true },
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
     { provide: DateAdapter, useClass: MyDateAdapter },
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
-  bootstrap: [ RouterComponent ]
+  bootstrap: [ WrapperComponent ]
 })
 export class AppModule { }

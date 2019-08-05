@@ -2,13 +2,13 @@ import * as moment from 'moment';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/takeUntil';
-import { apiUrl } from './../../globals';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Contact } from './contact';
 
 @Injectable()
 export class ContactService {
+  public apiUrl = '';
 
   constructor(
     private http: HttpClient
@@ -20,7 +20,7 @@ export class ContactService {
       `per_page=${ Number(itemsPerPage) }`,
       `search=${ String(searchString || '') }`
     ].join('&');
-    return this.http.get(apiUrl + 'phonebook/contact/all?' + params)
+    return this.http.get(this.apiUrl + 'phonebook/contact/all?' + params)
     .map((data: any) => {
       if (data.contacts && data.contacts.data) {
         return { records: (data.contacts.data || []).map(contact => Contact.parse(contact)), totalItems: data.contacts.total || 0 };
@@ -31,7 +31,7 @@ export class ContactService {
   }
 
   public getSingleContact(contactId: number): Observable<{ record: Contact }> {
-    return this.http.get(apiUrl + 'phonebook/contact/single?id=' + contactId)
+    return this.http.get(this.apiUrl + 'phonebook/contact/single?id=' + contactId)
     .map((data: any) => {
       if (data.contact) {
         return { record: Contact.parse(data.contact) };
@@ -61,7 +61,7 @@ export class ContactService {
         };
       })
     };
-    return this.http.post(`${ apiUrl }phonebook/contact/save`, params)
+    return this.http.post(`${ this.apiUrl }phonebook/contact/save`, params)
     .map((data: any) => {
       let savedRecord = new Contact();
       if (data.contact) {
@@ -74,7 +74,7 @@ export class ContactService {
   }
 
   public deleteContact(contactId: number): Observable<boolean> {
-    return this.http.delete(apiUrl + 'phonebook/contact/delete/' + contactId)
+    return this.http.delete(this.apiUrl + 'phonebook/contact/delete/' + contactId)
     .map((data: any) => {
       return data.status === 'success' ? true : false;
     }, error => {

@@ -1,23 +1,18 @@
-<div class="cell grid-y" id="wrapper" *ngIf="user">
+<div class="cell grid-y" id="wrapper">
   <header class="shadow">
     <div class="grid-x header-container space-between">
       <div class="cell app-name small-12 center-xy large-shrink">
         <span>Phonebook app</span>
       </div>
-      <div class="cell show-for-large shrink">
-        <div class="logout-button" (click)="logout()">
-          Cerrar sesión
-        </div>
-      </div>
     </div>
   </header>
   <main class="auto cell grid-x">
     <div id="side-menu" class="show-for-large large-2 cell text-center">
-      <div class="user-image center-xy">{{ getContactInitials() }}</div>
-      <div class="user-name">{{ user.firstName }} {{ user.lastName }}</div>
+      <div class="user-image center-xy">MP</div>
+      <div class="user-name">Mario Pineda</div>
     </div>
     <div class="small-12 large-10 cell app-router">
-      <app-router></app-router>
+      <router-outlet></router-outlet>
     </div>
     <footer class="small-12 cell">
       <div class="full-height center-y">
